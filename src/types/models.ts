@@ -14,8 +14,12 @@ export type ISocketResponse = {
     t: number;
 };
 
-export type ICountriesName = 'United States' | 'Germany' | 'Ukraine' | 'Hungary';
-
 export type ISocketData = {
     [key in string]: ISocketResponse;
 };
+
+export type ICountry = { name: string, emoji: string };
+
+
+export type ICountriesName = 'United States' | 'Germany' | 'Ukraine' | 'Hungary';
+
