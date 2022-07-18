@@ -52,12 +52,12 @@
 		});
 	});
 
-	function handleClick(event: any) {
+	function changeCurrentCountry(event: any) {
 		currentCountry = event;
 	}
 </script>
 
-<Search countryList={countries} handleClick={handleClick} />
+<Search countryList={countries} changeCurrentCountry={changeCurrentCountry} />
 
 {#if Object.values(socketDatas).length === 0}
 <Backdrop />

@@ -3,7 +3,7 @@
 	import type { ICountry } from 'src/types';
 
 	export let countryList: ICountry[];
-	export let handleClick: any;
+	export let changeCurrentCountry: any;
 
 	let searchInput = '';
 	let showCountryList = false;
@@ -31,7 +31,7 @@
 	}
 
 	function handleSelect(name: string) {
-		handleClick(name);
+		changeCurrentCountry(name);
 		handleSearch(name);
 		showCountryList = false;
 	}
