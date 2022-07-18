@@ -1,30 +1,10 @@
 <script context="module">
-	import { request, gql } from 'graphql-request';
+	import { request } from 'graphql-request';
 	import { convertObjectToArray } from '../utils/convertObjectToArray';
-
-	const query = gql`
-		{
-			t1: country(code: "US") {
-				name
-				emoji
-			}
-			t2: country(code: "DE") {
-				name
-				emoji
-			}
-			t3: country(code: "UA") {
-				name
-				emoji
-			}
-			t4: country(code: "HU") {
-				name
-				emoji
-			}
-		}
-	`;
+	import { countriesQuery } from '../repositories/graphql';
 
 	export const load = async () => {
-		const result = await request('https://countries.trevorblades.com/', query);
+		const result = await request('https://countries.trevorblades.com/', countriesQuery);
 		const countries = convertObjectToArray(result);
 		return {
 			props: {
@@ -42,16 +22,17 @@
 	import Card from '$lib/card.svelte';
 	import Backdrop from '$lib/backdrop.svelte';
 
-	import type { ISocketResponse, ISocketData, ICountriesName } from '../types/index';
+	import type { ISocketResponse, ISocketData, ICountriesName, ICountry } from '../types/index';
 
 	export let socketDatas = {} as ISocketData;
-	export let countries: any;
-	export let currentCountry: ICountriesName = 'United States';
+	export let countries: ICountry[];
+
+	let currentCountry: ICountriesName = 'United States';
 
 	onMount(() => {
 		const api_key = 'API_KEY';
 		const url = 'wss://fcsapi.com';
-		const currency_ids = '1,2,3'; // 1,1984,80,81,7774,7778
+		const currencyIds = '1,2,3'; // 1,1984,80,81,7774,7778
 
 		const socket = io(url, {
 			transports: ['websocket'],
@@ -59,25 +40,24 @@
 		});
 
 		socket.emit('heartbeat', api_key);
-		socket.emit('real_time_join', currency_ids);
-		socket.on('data_received', function (prices_data: ISocketResponse) {
-			const key = prices_data['s'];
+		socket.emit('real_time_join', currencyIds);
+		socket.on('data_received', function (data: ISocketResponse) {
+			const key = data['s'];
 			if (
 				(!socketDatas.hasOwnProperty(key) && Object.keys(socketDatas).length < 3) ||
 				socketDatas.hasOwnProperty(key)
 			) {
-				socketDatas[key] = prices_data;
+				socketDatas[key] = data;
 			}
 		});
 	});
 
 	function handleClick(event: any) {
-		const name = event.target.value;
-		currentCountry = name;
+		currentCountry = event;
 	}
 </script>
 
-<Search data={countries} handleClick={handleClick} />
+<Search countryList={countries} handleClick={handleClick} />
 
 {#if Object.values(socketDatas).length === 0}
 <Backdrop />
