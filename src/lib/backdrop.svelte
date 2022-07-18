@@ -1,4 +1,4 @@
-<div class="backdrop flex justify-center items-center">
+<div class="flex justify-center items-center absolute top-0 left-0 right-0 w-full min-h-screen bg-stone-800/10 z-50">
 	<div role="status">
         <div role="status">
             <svg class="inline mr-2 w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,16 +10,3 @@
 		<span class="sr-only">Loading...</span>
 	</div>
 </div>
-
-<style>
-	.backdrop {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-        width: 100%;
-        min-height: 100vh;
-		background: #00000040;
-		z-index: 200;
-	}
-</style>
