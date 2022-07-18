@@ -71,7 +71,7 @@
 
 	<ul
 		class:show={showCountryList}
-		class="countryList hidden absolute m-auto w-96 bg-white z-50 border-2 border-slate-50 py-2 px-5"
+		class="countryList hidden absolute m-auto w-96 bg-white z-50 border-2 border-slate-50 py-2 px-5 shadow-lg"
 	>
 		{#each selectedCountries as { name, emoji }}
 			<li
