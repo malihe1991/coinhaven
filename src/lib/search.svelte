@@ -48,7 +48,7 @@
 
 <div class="flex flex-col justify-center my-10 relative m-auto w-96">
 	<div class="text-xs text-slate-400 pb-1">Select your country</div>
-	<div class="relative">
+	<div class="relative" on:click={handlefocus}>
 		<div class="search-icon absolute w3-large"><i class="fa fa-search opacity-20" /></div>
 		<div class="hidden arrow absolute w3-tiny" class:show={!showCountryList}>
 			<i class="fa fa-chevron-down opacity-20" />
@@ -61,7 +61,6 @@
 			type="text"
 			name="search"
 			value={searchInput}
-			on:focus={handlefocus}
 			on:input={handleChange}
 			autocomplete="off"
 			placeholder="Search"
