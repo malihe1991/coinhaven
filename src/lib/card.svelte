@@ -3,7 +3,8 @@
 
 	export let data: ISocketResponse;
 	export let currentCountry: ICountriesName;
-	export let countriesInfo = {
+
+	let countriesInfo = {
 		'United States': {
 			ratio: 1,
 			abbreviation: 'USD',
