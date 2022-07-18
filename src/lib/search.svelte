@@ -45,6 +45,13 @@
 	<div class="text-xs text-slate-400 pb-1">Select your country</div>
 	<div class="relative">
 		<div class="search-icon absolute w3-large"><i class="fa fa-search opacity-20" /></div>
+		<div class="hidden arrow absolute w3-tiny" class:show={!showCountryList}>
+			<i class="fa fa-chevron-down opacity-20" />
+		</div>
+		<div class="hidden arrow absolute w3-tiny" class:show={showCountryList} >
+			<i class="fa fa-chevron-up text-blue-600" />
+		</div>
+
 		<input
 			type="text"
 			name="search"
@@ -53,7 +60,7 @@
 			on:input={handleChange}
 			autocomplete="off"
 			placeholder="Search entring the country"
-			class="m-auto w-96 bg-gray-50 pl-10 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block max-w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+			class="m-auto w-96 bg-gray-50 pl-10 border border-gray-300 text-gray-900 text-sm rounded-lg outline-0 focus:ring-blue-500 focus:border-blue-500 block max-w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 		/>
 	</div>
 
@@ -85,5 +92,9 @@
 	.search-icon {
 		top: 6px;
 		left: 10px;
+	}
+	.arrow {
+		top: 10px;
+		right: 10px;
 	}
 </style>
