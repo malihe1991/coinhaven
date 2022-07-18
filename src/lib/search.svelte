@@ -39,6 +39,11 @@
 	function handleChange(event: any) {
 		handleSearch(event.target.value);
 	}
+
+	function handlefocus(event: any) {
+		showCountryList = true;
+		event.target.placeholder = 'Search entering the country';
+	}
 </script>
 
 <div class="flex flex-col justify-center my-10 relative m-auto w-96">
@@ -56,10 +61,10 @@
 			type="text"
 			name="search"
 			value={searchInput}
-			on:focus={() => (showCountryList = true)}
+			on:focus={handlefocus}
 			on:input={handleChange}
 			autocomplete="off"
-			placeholder="Search entring the country"
+			placeholder="Search"
 			class="m-auto w-96 bg-gray-50 pl-10 border border-gray-300 text-gray-900 text-sm rounded-lg outline-0 focus:ring-blue-500 focus:border-blue-500 block max-w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 		/>
 	</div>
