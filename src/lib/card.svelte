@@ -1,31 +1,11 @@
 <script lang="ts">
 	import type { ICountriesName, ISocketResponse } from 'src/types';
+	import { CONST } from '../constants';
 
 	export let data: ISocketResponse;
 	export let currentCountry: ICountriesName;
 
-	let countriesInfo = {
-		'United States': {
-			ratio: 1,
-			abbreviation: 'USD',
-			symbol: '$'
-		},
-		Germany: {
-			ratio: 1.02,
-			abbreviation: 'EUR',
-			symbol: '€'
-		},
-		Ukraine:{
-			ratio: 0.041,
-			abbreviation: 'UAH',
-			symbol: '₴'
-		},
-		Hungary: {
-			ratio: 2.52,
-			abbreviation: 'HUF',
-			symbol: 'Ft'
-		}
-	};
+	let countriesInfo = CONST.COUNTRIES_INFO;
 </script>
 
 <div class="max-w-sm mx-2">
