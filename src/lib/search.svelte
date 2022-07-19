@@ -56,7 +56,6 @@
 		<div class="hidden arrow absolute w3-tiny" class:show={showCountryList} >
 			<i class="fa fa-chevron-up text-blue-600" />
 		</div>
-
 		<input
 			type="text"
 			name="search"
@@ -67,7 +66,6 @@
 			class="m-auto w-96 bg-gray-50 pl-10 border border-gray-300 text-gray-900 text-sm rounded-lg outline-0 focus:ring-blue-500 focus:border-blue-500 block max-w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 		/>
 	</div>
-
 	<ul
 		class:show={showCountryList}
 		class="countryList hidden absolute m-auto w-96 bg-white z-50 border-2 border-slate-50 py-2 px-5 shadow-lg"
