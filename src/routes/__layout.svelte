@@ -2,13 +2,6 @@
   import "../styles/app.css";
 </script>
 
-<div class="container m-auto p-5">
+<div class="m-auto p-5 w-4/5 min-h-screen">
   <slot />
 </div>
-
-<style>
-  .container {
-    width: 80%;
-    min-height: 100vh;
-  }
-</style>
