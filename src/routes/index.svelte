@@ -2,9 +2,10 @@
 	import { request } from 'graphql-request';
 	import { convertObjectToArray } from '../utils/convertObjectToArray';
 	import { countriesQuery } from '../repositories/graphql';
+	import { CONST } from '../constants';
 
 	export const load = async () => {
-		const result = await request('https://countries.trevorblades.com/', countriesQuery);
+		const result = await request(CONST.COUNTRIES_BASE_URL, countriesQuery);
 		const countries = convertObjectToArray(result);
 		return {
 			props: {
@@ -30,17 +31,13 @@
 	let currentCountry: ICountriesName = 'United States';
 
 	onMount(() => {
-		const api_key = 'API_KEY';
-		const url = 'wss://fcsapi.com';
-		const currencyIds = '1,2,3'; // 1,1984,80,81,7774,7778
-
-		const socket = io(url, {
+		const socket = io(CONST.COINS_BASE_URL, {
 			transports: ['websocket'],
 			path: '/v3/'
 		});
 
-		socket.emit('heartbeat', api_key);
-		socket.emit('real_time_join', currencyIds);
+		socket.emit('heartbeat', CONST.API_KEY);
+		socket.emit('real_time_join', CONST.CURRENCY_ID);
 		socket.on('data_received', function (data: ISocketResponse) {
 			const key = data['s'];
 			if (
