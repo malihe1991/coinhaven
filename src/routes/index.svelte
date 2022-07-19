@@ -1,5 +1,6 @@
 <script context="module">
 	import { request } from 'graphql-request';
+
 	import { convertObjectToArray } from '../utils/convertObjectToArray';
 	import { countriesQuery } from '../repositories/graphql';
 	import { CONST } from '../constants';
@@ -31,10 +32,7 @@
 	let currentCountry: ICountriesName = 'United States';
 
 	onMount(() => {
-		const socket = io(CONST.COINS_BASE_URL, {
-			transports: ['websocket'],
-			path: '/v3/'
-		});
+		const socket = io(CONST.COINS_BASE_URL, CONST.SOCKET_CONFIG);
 
 		socket.emit('heartbeat', CONST.API_KEY);
 		socket.emit('real_time_join', CONST.CURRENCY_ID);
