@@ -1,13 +1,12 @@
 <script context="module">
 	import { request } from 'graphql-request';
 
-	import { convertObjectToArray } from '../utils/convertObjectToArray';
 	import { countriesQuery } from '../repositories/graphql';
 	import { CONST } from '../constants';
 
 	export const load = async () => {
 		const result = await request(CONST.COUNTRIES_BASE_URL, countriesQuery);
-		const countries = convertObjectToArray(result);
+		const countries = Object.values(result);
 		return {
 			props: {
 				countries
